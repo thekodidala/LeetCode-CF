@@ -1,4 +1,1 @@
 # Leetcode
-# Sample
-# Sample
-# Sample
