@@ -1,7 +1,7 @@
 class Solution {
 public:
     int lastStoneWeight(vector<int>& v) {
-        priority_queue<int> pq(begin(v),end(v));
+        priority_queue<int> pq(begin(v),end(v));//it stores from max to min element.We call it as max heap vice versa.
         while(pq.size()>1){
             int x=pq.top();
             pq.pop();
