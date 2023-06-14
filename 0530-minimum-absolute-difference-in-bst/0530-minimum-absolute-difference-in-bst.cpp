@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    //inorder traversal problem
+    //visit left node fitst then root and right node
     int diff=INT_MAX,val=-1;
     int getMinimumDifference(TreeNode* root) {
         if(root->left!=NULL){
