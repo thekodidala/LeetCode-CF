@@ -1,16 +1,16 @@
 class Solution {
 public:
-    int findmax(vector<int>&nums,int n,vector<int>&dp){
-        if(n==0){return nums[n];}
-        if(n<0){return 0;}
-        if(dp[n]!=-1){return dp[n];}
-        int pick=nums[n]+findmax(nums,n-2,dp);
-        int notpick=0+findmax(nums,n-1,dp);
-        return dp[n]=max(pick,notpick);
-    }
+    //interesting dp problem solved using tabulation (bottom up) approach
     int rob(vector<int>& nums) {
         int n=nums.size();
-        vector<int>dp(n+1,-1);
-        return findmax(nums,n-1,dp);
+        vector<int>dp(n+1);
+        dp[0]=nums[0];
+        for(int i=1;i<n;i++){
+            int pick=nums[i];
+            if(i>1){pick+=dp[i-2];}
+            int notpick=0+dp[i-1];
+            dp[i]=max(pick,notpick);
+        }
+        return dp[n-1];
     }
 };
