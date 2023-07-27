@@ -17,9 +17,8 @@ public:
         vector<int>temp1,temp2;
         for(int i=0;i<nums.size();i++){
             if(i!=0)temp1.push_back(nums[i]);
+            if(i!=n-1)temp2.push_back(nums[i]);
         }
-        temp2=nums;
-        temp2.pop_back();
         return max(findmax(temp1,n-1),findmax(temp2,n-1));
     }
 };
