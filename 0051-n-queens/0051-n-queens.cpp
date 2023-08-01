@@ -27,6 +27,7 @@ public:
         for(int i=0;i<n;i++){
             board[i]=s;
         }
+        //hashing is used instead of using 3 while loops for checking whether queen is present or not in the previous row and cols 
         vector<int>left(n,0),lowerdia(2*n-1,0),upperdia(2*n-1,0);
         solve(0,board,ans,n,left,lowerdia,upperdia);
         return ans;
