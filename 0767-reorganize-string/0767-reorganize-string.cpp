@@ -1,29 +1,32 @@
 class Solution {
 public:
     string reorganizeString(string S) {
-        vector<int> mp(26);
-        int n = S.size();
-        for (char c: S)
-            mp[c-'a']=mp[c-'a']+1;
-        priority_queue<pair<int, char>> pq;
-        for (int i = 0; i < 26; ++i) {
-            if (mp[i] > (n+1)/2) return "";
-            if (mp[i]) pq.push({mp[i], i+'a'});
+        int n=S.length();
+        vector<int>v(26,0);
+        for(auto a:S){
+            v[a-'a']=v[a-'a']+1;
         }
-        queue<pair<int, char>> myq;
-        string ans;
-        while (!pq.empty() || myq.size() > 1) {
-            if (myq.size() > 1) {
-                auto cur = myq.front();
-                myq.pop();
-                if (cur.first != 0) pq.push(cur);
+        priority_queue<pair<int,char>>pq;
+        for(int i=0;i<26;i++){
+            if(v[i]>(n+1)/2){return "";}
+            if(v[i]){
+                pq.push({v[i],i+'a'});
             }
-            if (!pq.empty()) {
-                auto cur = pq.top();
+        }
+        queue<pair<int,char>>q;
+        string ans;
+        while(!pq.empty()||q.size()>1){
+            if(q.size()>1){
+                auto cur=q.front();
+                q.pop();
+                if(cur.first!=0)pq.push(cur);
+            }
+            if(!pq.empty()){
+                auto cur=pq.top();
                 pq.pop();
-                ans += cur.second;
+                ans+=cur.second;
                 cur.first--;
-                myq.push(cur);
+                q.push(cur);
             }
         }
         return ans;
