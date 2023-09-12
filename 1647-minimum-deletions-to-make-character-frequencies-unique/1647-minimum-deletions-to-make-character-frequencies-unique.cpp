@@ -9,6 +9,7 @@ public:
         int res=0;
         for(int i=24;i>=0;i--){
             if(mp[i]>=mp[i+1]){
+                if(mp[i]==0)return res;
                 int temp=mp[i];
                 mp[i]=max(0,mp[i+1]-1);
                 res+=temp-mp[i];
