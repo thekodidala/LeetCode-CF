@@ -1,14 +1,15 @@
 class Solution {
 public:
-    vector<vector<int>> groupThePeople(vector<int>& gz) {
-  vector<vector<int>> res, groups(gz.size() + 1);
-  for (auto i = 0; i < gz.size(); ++i) {
-    groups[gz[i]].push_back(i);
-    if (groups[gz[i]].size() == gz[i]) {
-      res.push_back({});
-      swap(res.back(), groups[gz[i]]);
+    vector<vector<int>> groupThePeople(vector<int>& group) {
+        int n=group.size();
+        vector<vector<int>>res,temp(n+1);
+        for(int i=0;i<n;i++){
+            temp[group[i]].push_back(i);
+            if(temp[group[i]].size()==group[i]){
+                res.push_back({});
+                swap(res.back(),temp[group[i]]);
+            }
+        }
+        return res;
     }
-  }
-  return res;
-}
 };
