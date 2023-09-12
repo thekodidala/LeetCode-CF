@@ -6,8 +6,8 @@ public:
         for(int i=0;i<n;i++){
             temp[group[i]].push_back(i);
             if(temp[group[i]].size()==group[i]){
-                res.push_back({});
-                swap(res.back(),temp[group[i]]);
+                res.push_back(temp[group[i]]);
+                temp[group[i]].clear();
             }
         }
         return res;
