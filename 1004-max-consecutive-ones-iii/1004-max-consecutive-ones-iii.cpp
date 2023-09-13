@@ -1,20 +1,23 @@
 class Solution {
 public:
-    int longestOnes(vector<int>& arr, int k) {
-        //two pointer technique
-        int i=0,j=0,cnt=0,n=arr.size();
-        int res=INT_MIN;
-        while(j<n){
-            
-            if(arr[j]==0){cnt++;}
-            
-            while(cnt>k){
-                if(arr[i]==0){cnt--;}
-                i++;
+    int longestOnes(vector<int>& nums, int k) {
+        unordered_map<int,int>mp;
+        int left=0,right=0,n=nums.size(),cnt=0;
+        int maxi=0;
+        while(right<n){
+            if(nums[right]==1){
+                mp[nums[right]]++;
+                cnt=max(cnt,mp[nums[right]]);
             }
-            res=max(res,j-i+1);
-            j++;
+            if(right-left+1-cnt>k){
+                if(nums[left]==1){
+                    mp[nums[left]]--;
+                }
+                left++;
+            }
+            maxi=max(maxi,right-left+1);
+            right++;
         }
-        return res;
+        return maxi;
     }
 };
