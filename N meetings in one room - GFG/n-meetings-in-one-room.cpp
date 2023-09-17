@@ -8,18 +8,12 @@ class Solution
     public:
     //Function to find the maximum number of meetings that can
     //be performed in a meeting room.
-    // static bool pairCompare(const pair<pair<int, int>, int> &a,
-    //                  const pair<pair<int, int>, int> &b) 
-    // {
-    //     if (a.first.second != b.first.second) {
-    //         return a.first.second < b.first.second;
-    //     }
-    //     return a.second < b.second;
-    // }
     static bool comp(pair<pair<int,int>,int>&a,pair<pair<int,int>,int>&b){
         if(a.first.second<b.first.second)return true;
         else if(a.first.second>b.first.second)return false;
-        else if(a.second<b.second)return true;
+        else if(a.first.second==b.first.second){
+            if(a.second<b.second)return true;
+        }
         return false;
     }
     int maxMeetings(int start[], int end[], int n)
@@ -31,10 +25,10 @@ class Solution
         }
         sort(v.begin(),v.end(),comp);
         int temp=-1,cnt=0;
-        for(int i=0;i<n;i++){
-            if(v[i].first.first>temp){
+        for(int j=0;j<n;j++){
+            if(v[j].first.first>temp){
                 cnt++;
-                temp=v[i].first.second;
+                temp=v[j].first.second;
             }
         }
         return cnt;
