@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Interesting problem just find longest subarray of sum-x and return n-lcs
     int minOperations(vector<int>& nums, int x) {
         int sum=0;
         for(auto it:nums){
