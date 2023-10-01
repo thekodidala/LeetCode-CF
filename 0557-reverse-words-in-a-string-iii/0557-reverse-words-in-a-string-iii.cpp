@@ -1,26 +1,16 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        int n=s.length();
+        //stringstream is used to read string word by word 
+        stringstream ss(s);
+        string word;
         string res;
-        string str="";
-        bool flag=false;
-        for(int i=0;i<n;i++){
-            if(iswspace(s[i])){
-                reverse(str.begin(),str.end());
-                if(flag)
-                    res+=" ";
-                res+=str;
-                str="";
-                flag=true;
-            }
-            else
-                str+=s[i];
-        }
-        reverse(str.begin(),str.end());
-        if(flag)
+        while(ss>>word){
+            reverse(word.begin(),word.end());
+            res+=word;
             res+=" ";
-        res=res+str;
+        }
+        res.pop_back();
         return res;
     }
 };
