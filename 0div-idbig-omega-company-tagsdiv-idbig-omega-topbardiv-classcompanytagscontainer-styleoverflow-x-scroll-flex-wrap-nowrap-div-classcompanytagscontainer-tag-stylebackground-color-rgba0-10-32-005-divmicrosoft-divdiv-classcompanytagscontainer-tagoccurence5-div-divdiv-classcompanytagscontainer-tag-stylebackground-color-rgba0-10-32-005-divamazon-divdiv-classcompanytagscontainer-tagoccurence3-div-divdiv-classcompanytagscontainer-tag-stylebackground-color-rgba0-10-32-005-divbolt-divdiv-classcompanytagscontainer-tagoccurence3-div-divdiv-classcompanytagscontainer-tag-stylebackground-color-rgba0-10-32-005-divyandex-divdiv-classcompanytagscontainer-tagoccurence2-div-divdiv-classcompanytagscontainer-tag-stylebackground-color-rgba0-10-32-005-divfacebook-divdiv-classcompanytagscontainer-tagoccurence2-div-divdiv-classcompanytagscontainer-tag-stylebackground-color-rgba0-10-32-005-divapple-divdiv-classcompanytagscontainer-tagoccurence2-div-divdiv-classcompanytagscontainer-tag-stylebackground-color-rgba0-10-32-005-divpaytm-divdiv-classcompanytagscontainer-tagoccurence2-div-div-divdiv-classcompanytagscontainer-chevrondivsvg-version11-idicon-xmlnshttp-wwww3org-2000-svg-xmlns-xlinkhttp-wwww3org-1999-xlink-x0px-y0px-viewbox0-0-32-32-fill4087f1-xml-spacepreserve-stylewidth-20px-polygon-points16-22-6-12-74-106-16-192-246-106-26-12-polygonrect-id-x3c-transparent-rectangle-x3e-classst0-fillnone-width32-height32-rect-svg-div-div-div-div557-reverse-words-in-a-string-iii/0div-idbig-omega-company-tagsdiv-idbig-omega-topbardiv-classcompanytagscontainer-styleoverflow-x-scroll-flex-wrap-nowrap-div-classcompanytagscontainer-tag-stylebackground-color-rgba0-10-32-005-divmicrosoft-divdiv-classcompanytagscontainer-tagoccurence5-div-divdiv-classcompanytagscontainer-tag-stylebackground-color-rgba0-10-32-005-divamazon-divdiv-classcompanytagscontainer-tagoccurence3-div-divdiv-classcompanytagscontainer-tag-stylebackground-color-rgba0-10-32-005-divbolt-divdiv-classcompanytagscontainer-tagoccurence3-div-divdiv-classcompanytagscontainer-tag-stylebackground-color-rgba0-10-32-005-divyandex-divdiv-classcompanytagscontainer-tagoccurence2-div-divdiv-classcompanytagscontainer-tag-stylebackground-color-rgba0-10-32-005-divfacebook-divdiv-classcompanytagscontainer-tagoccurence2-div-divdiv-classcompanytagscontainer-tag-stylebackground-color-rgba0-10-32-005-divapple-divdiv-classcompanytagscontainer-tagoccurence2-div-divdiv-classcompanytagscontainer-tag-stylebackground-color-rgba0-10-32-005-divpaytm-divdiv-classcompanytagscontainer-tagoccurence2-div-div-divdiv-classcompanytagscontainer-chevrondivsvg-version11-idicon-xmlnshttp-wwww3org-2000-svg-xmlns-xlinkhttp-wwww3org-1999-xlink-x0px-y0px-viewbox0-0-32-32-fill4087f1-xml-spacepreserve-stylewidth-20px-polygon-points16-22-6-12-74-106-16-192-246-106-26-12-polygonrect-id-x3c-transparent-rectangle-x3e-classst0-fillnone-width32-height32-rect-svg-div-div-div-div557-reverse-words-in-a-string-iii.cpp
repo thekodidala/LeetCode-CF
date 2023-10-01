@@ -1,6 +1,7 @@
 class Solution {
 public:
     string reverseWords(string s) {
+        //stringstream is used to read string word by word 
         stringstream ss(s);
         string word;
         string res;
