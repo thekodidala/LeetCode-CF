@@ -37,7 +37,7 @@ class Solution
             for(auto a:v){
                 int cr=row+a.first;
                 int cc=col+a.second;
-                if(cr>=0 && cr<n && cc>=0 && cc<m && grid[cr][cc]==1 && visit[cr][cc]==0){
+                if(cr>=0 && cr<n && cc>=0 && cc<m && grid[cr][cc]==1 && visit[cr][cc]!=2){
                     visit[cr][cc]=2;
                     q.push({{cr,cc},t+1});
                     cnt--;
