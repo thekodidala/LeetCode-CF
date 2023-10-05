@@ -6,17 +6,16 @@ using namespace std;
 class Solution {
 public:
     vector<pair<int,int>>v={{-1,0},{1,0},{0,1},{0,-1}};
-    void dfs(int sr,int sc,int prev,vector<vector<int>>&img,vector<vector<int>>&visit,int color){
+    void dfs(int sr,int sc,int prev,vector<vector<int>>&img,int color,vector<vector<int>>&image){
         img[sr][sc]=color;
-        visit[sr][sc]=1;
         int n=img.size();
         int m=img[0].size();
         for(auto list:v){
             int r=sr+list.first;
             int c=sc+list.second;
-            if(r>=0 && r<n && c>=0 && c<m && !visit[r][c] && img[r][c]==prev){
-                img[r][c]=color;
-                dfs(r,c,prev,img,visit,color);
+            if(r>=0 && r<n && c>=0 && c<m && image[r][c]==prev &&img[r][c]!=color){
+                //img[r][c]=color;
+                dfs(r,c,prev,img,color,image);
             }
         }
     }
@@ -25,9 +24,8 @@ public:
         int n=image.size();
         int m=image[0].size();
         vector<vector<int>>img=image;
-        vector<vector<int>>visit(n,vector<int>(m,0));
         int prev=img[sr][sc];
-        dfs(sr,sc,prev,img,visit,newColor);
+        dfs(sr,sc,prev,img,newColor,image);
         return img;
     }
 };
