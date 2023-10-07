@@ -8,9 +8,10 @@ public:
         if(dp[n]!=-1){
             return dp[n];
         }
-        int ans=INT_MIN;
+        int ans=n;
         for(int j=1;j<=n;j++){
-            ans=max(ans,max(j*fun(n-j,dp),j*(n-j)));
+            int product=max(j*fun(n-j,dp),j*(n-j));
+            ans=max(ans,product);
         }
         return dp[n]=ans;
     }
