@@ -21,16 +21,14 @@ public:
     string longestPalindrome(string s) {
         int n=s.length();
         if(n<=1){return s;}
-        //for odd length palindrome
+        
         int st=0,end=0,len=1;
         for(int i=0;i<n;i++){
             int l=i,r=i;
+            //for odd length palindrome
             solve(l,r,s,st,len);
-        }
-        //for even length palindrome
-        for(int i=0;i<n-1;i++){
-            int l=i,r=i+1;
-            solve(l,r,s,st,len);
+            //for even length palindrome
+            solve(l,r+1,s,st,len);
         }
         return s.substr(st,len);
     }
