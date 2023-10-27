@@ -15,14 +15,12 @@ public:
         if(mx>len){
             len=mx;
             st=l+1;
-            //end=r-1;
         }   
     }
     string longestPalindrome(string s) {
         int n=s.length();
         if(n<=1){return s;}
-        
-        int st=0,end=0,len=1;
+        int st=0,len=0;
         for(int i=0;i<n;i++){
             int l=i,r=i;
             //for odd length palindrome
