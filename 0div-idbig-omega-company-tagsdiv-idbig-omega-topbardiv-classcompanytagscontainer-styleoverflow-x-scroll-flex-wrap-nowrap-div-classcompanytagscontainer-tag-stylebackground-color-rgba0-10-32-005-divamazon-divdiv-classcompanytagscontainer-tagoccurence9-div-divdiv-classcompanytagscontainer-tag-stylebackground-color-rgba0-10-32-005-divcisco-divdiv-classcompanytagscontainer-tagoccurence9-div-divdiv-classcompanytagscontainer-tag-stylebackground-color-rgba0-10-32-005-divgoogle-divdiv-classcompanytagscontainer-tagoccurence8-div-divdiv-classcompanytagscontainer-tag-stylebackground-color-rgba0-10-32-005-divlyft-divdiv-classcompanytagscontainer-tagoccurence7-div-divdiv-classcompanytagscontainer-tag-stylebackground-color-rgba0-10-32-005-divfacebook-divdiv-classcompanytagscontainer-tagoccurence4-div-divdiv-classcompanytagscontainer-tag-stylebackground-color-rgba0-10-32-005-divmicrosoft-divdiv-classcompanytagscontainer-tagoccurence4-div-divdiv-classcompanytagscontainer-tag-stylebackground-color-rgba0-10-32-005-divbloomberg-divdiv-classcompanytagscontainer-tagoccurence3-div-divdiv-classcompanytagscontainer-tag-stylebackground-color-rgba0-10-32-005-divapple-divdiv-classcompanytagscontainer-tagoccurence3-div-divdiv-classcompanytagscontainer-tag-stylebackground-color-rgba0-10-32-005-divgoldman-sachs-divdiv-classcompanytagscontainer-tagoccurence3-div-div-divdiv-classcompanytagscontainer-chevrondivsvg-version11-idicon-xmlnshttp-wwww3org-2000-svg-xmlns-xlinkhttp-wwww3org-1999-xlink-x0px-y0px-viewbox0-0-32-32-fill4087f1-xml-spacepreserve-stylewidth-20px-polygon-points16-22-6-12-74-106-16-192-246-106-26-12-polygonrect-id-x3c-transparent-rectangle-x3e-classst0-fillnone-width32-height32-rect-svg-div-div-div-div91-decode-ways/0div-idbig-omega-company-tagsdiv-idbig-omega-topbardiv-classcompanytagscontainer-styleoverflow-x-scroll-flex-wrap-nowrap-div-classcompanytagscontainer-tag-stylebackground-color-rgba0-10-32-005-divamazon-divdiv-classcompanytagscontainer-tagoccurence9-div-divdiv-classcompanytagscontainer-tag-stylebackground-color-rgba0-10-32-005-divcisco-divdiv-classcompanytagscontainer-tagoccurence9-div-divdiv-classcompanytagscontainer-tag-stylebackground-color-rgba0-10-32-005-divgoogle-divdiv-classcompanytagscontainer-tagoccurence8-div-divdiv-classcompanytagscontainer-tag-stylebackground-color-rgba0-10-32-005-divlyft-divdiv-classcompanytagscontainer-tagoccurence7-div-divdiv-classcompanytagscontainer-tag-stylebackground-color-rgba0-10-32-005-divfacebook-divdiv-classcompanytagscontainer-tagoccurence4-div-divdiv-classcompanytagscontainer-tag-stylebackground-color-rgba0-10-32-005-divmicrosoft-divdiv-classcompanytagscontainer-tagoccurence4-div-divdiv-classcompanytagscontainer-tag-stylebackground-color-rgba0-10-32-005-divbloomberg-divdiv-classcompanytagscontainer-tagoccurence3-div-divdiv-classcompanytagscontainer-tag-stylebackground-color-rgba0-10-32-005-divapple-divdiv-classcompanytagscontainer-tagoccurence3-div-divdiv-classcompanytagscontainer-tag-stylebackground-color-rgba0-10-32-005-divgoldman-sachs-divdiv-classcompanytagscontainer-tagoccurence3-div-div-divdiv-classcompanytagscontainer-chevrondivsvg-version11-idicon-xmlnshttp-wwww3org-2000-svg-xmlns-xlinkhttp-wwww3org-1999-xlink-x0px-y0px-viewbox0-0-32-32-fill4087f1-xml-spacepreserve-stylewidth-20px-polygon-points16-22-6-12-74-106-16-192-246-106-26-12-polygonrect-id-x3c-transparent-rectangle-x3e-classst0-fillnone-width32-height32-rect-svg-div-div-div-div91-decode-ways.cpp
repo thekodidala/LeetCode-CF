@@ -4,7 +4,7 @@ public:
         if(i>=n){
             return 1;
         }
-        if(i<n && s[i]=='0'){
+        if(s[i]=='0'){
             return 0;
         }
         if(dp[i]!=-1){
