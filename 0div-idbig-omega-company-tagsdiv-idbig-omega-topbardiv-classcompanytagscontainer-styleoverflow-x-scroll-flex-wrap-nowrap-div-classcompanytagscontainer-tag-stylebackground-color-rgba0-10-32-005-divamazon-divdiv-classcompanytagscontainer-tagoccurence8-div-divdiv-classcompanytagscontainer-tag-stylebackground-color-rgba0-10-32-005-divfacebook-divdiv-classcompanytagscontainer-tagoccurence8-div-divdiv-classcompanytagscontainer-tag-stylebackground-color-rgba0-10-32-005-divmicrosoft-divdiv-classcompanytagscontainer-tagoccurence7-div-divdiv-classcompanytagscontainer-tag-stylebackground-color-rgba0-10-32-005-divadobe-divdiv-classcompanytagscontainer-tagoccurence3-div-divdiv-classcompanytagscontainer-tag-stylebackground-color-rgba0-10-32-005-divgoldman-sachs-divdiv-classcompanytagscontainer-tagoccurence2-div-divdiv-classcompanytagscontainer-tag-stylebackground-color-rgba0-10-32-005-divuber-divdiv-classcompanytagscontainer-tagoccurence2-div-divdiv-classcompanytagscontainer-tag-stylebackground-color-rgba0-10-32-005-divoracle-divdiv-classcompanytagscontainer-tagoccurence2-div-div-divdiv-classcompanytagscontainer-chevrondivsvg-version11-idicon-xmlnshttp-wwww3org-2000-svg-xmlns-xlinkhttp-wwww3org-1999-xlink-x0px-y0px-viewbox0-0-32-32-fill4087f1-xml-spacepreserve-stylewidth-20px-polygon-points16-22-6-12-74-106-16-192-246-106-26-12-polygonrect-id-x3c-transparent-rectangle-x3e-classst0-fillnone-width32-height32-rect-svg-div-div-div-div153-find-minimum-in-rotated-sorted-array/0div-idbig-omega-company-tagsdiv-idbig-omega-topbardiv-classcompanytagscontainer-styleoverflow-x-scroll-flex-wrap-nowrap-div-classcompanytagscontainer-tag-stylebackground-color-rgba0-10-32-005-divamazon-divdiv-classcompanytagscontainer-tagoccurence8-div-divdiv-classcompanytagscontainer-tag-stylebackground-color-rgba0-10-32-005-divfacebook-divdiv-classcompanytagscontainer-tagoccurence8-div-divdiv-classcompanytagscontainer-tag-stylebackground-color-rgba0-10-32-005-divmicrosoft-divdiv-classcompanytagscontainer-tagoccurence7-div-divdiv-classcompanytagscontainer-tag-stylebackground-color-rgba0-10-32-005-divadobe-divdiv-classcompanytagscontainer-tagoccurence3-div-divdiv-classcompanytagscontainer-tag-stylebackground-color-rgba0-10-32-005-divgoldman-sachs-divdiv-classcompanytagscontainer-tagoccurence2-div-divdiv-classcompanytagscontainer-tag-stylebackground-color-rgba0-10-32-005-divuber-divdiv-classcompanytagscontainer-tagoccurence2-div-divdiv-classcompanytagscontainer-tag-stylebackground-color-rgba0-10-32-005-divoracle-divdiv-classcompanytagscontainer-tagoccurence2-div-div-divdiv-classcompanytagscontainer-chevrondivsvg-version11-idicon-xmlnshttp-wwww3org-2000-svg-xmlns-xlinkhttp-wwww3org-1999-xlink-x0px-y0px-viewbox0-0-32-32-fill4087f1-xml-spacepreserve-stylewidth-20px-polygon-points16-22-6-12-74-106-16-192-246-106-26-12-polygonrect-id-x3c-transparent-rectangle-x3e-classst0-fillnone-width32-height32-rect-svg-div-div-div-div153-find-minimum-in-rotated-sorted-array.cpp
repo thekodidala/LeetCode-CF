@@ -13,8 +13,7 @@ public:
             else{
                 break;
             }
-           // return nums[low];
         }
-        return nums[low];
+        return nums[high];
     }
 };
