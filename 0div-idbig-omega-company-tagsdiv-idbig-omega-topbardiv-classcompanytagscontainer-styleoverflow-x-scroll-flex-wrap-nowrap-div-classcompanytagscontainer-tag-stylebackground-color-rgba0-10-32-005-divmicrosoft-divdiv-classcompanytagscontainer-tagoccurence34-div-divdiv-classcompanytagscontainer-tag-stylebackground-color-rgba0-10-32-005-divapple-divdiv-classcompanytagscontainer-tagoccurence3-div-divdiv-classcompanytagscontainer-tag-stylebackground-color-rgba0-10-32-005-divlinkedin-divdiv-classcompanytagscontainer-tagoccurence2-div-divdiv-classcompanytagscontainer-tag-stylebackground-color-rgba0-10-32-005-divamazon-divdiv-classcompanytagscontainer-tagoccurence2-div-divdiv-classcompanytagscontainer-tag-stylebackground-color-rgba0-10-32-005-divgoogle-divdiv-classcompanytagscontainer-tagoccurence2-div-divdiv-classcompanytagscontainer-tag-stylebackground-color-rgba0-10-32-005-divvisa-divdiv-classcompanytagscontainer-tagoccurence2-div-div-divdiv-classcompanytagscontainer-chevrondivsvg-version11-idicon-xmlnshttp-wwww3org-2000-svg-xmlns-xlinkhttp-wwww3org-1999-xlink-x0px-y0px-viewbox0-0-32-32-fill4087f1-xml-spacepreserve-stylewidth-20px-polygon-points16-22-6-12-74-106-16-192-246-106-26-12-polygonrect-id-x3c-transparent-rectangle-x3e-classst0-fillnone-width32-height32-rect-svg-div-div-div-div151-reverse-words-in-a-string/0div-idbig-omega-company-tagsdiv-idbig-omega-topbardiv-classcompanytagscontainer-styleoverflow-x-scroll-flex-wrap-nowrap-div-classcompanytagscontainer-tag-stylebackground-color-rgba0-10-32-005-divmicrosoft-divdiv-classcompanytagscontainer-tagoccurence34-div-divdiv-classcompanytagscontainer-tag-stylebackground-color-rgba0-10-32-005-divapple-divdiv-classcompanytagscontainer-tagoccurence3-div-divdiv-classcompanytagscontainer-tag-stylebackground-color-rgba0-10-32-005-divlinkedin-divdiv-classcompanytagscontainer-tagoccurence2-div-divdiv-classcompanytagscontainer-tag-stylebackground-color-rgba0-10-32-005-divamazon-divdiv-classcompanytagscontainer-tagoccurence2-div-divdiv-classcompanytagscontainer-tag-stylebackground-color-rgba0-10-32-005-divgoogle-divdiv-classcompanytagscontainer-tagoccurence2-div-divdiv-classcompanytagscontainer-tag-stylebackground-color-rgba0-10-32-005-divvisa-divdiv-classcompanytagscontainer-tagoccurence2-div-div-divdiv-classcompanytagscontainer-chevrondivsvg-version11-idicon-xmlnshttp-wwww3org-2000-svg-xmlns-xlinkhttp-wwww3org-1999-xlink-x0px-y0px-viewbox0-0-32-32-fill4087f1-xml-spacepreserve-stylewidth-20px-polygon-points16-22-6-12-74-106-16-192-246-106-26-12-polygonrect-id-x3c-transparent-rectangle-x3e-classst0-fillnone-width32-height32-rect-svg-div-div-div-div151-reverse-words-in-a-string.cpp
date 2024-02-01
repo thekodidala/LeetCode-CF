@@ -1,24 +1,22 @@
 class Solution {
 public:
+    //without using stack
     string reverseWords(string s) {
         int n=s.length();
-        stack<string>st;
-        string str;
+        string res;
         for(int i=0;i<n;i++){
-            str="";
-            if(s[i]==' ')continue;
+            string str;
+            if(s[i]==' '){continue;}
             while(i<n &&s[i]!=' '){
                 str+=s[i];
                 i++;
             }
-            st.push(str);
-        }
-        string res;
-        while(!st.empty()){
-            res+=st.top();
-            st.pop();
-            if(st.size()>0){
-                res+=" ";
+            if(res!=""){
+                res=str+" "+res;
+                
+            }
+            else{
+                res=str;
             }
         }
         return res;
